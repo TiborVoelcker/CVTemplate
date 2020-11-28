@@ -1,0 +1,107 @@
+\documentclass[12pt,a4paper]{cvgen}
+\usepackage{paracol}
+
+%%%%%%%%%%%%%%%%%%%% personal info %%%%%%%%%%%%%%%%%%%%
+\photo{800px-Besuch_Bundeskanzlerin_Angela_Merkel_im_Rathaus_Köln-09916_(cropped)}{2.5cm}
+\city{Berlin}
+\postalcode{10557}
+\street{Willy-Brandt-Straße 1}
+\phone{030 18 272 2720}
+\email{internetpost@bpa.bund.de}
+\companyaddress{%
+Christlich Demokratische Union Deutschlands (CDU)\\
+Klingelhöferstraße 8\\
+10785 Berlin
+}
+
+%%%%%%%%%%%%%%%%%%%% change colors and font sizes %%%%%%%%%%%%%%%%%%%%
+\definecolor{AirbusDarkBlue}{HTML}{00205b}
+\definecolor{AirbusBlue}{HTML}{005587}
+
+\colorlet{header}{AirbusBlue}
+\colorlet{accent}{AirbusDarkBlue}
+\colorlet{bodyfont}{black!65}
+
+\renewcommand{\letterbodyfont}{\large}
+\renewcommand{\letterinfofont}{\normalsize}
+
+%%%%%%%%%%%%%%%%%%%% change font %%%%%%%%%%%%%%%%%%%%
+\usepackage[rm]{roboto}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}[][][]
+\begin{letter}{Bewerbung als Bundeskanzlerin}
+Sehr geehrte Annegret Kramp-Karrenbauer,\\~\\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus lorem vel nisl sodales, id tincidunt ligula congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce elementum sollicitudin turpis, vitae ultrices nunc lobortis non. In quam nulla, hendrerit ut libero sit amet, tincidunt cursus massa. In sit amet turpis nisl. Proin eget nibh lectus. Sed magna tellus, ullamcorper ut laoreet placerat, dictum nec justo. Proin odio augue, vestibulum nec erat vel, consectetur placerat urna. Nam magna erat, scelerisque ac molestie vitae, cursus eget velit. Quisque pharetra, neque eget pharetra tempor, lacus lectus lobortis ex, quis sagittis tellus ex eu lorem. Mauris sollicitudin urna at nisi hendrerit vestibulum. Nam ultricies commodo lorem, sit amet maximus sapien aliquet et. Vestibulum velit ligula, pulvinar sit amet viverra ac, lobortis ac nibh. Etiam consequat nunc posuere eros venenatis dictum. Quisque sed convallis est. Etiam hendrerit tortor vitae risus tincidunt, ut condimentum nibh imperdiet.\\~\\
+Sed et varius sapien. In sed laoreet mi, sit amet semper mauris. Integer viverra vel orci tincidunt aliquam. Vivamus turpis orci, egestas nec nibh non, malesuada ullamcorper lorem. Proin suscipit, sapien cursus aliquam malesuada, lorem augue iaculis leo, at dignissim ligula leo ac dolor. Pellentesque non mollis quam. Duis vulputate gravida nisi vel dictum. Donec semper, nunc id pellentesque luctus, libero dui vulputate felis, et congue mauris leo et velit.\\~\\
+Donec nec nisl quis magna maximus faucibus. In nunc nulla, eleifend a odio vel, lacinia interdum lorem. Donec in eleifend elit. Quisque fermentum ac magna sit amet fermentum. Suspendisse porttitor leo dui, ut vestibulum sem semper eget. Integer interdum, lectus ut fermentum lacinia, libero ipsum vehicula neque, quis cursus lacus ipsum ac nisl. Nam rhoncus leo nec nisl gravida, sed lobortis augue varius. Morbi sed quam ex. Morbi nec ultricies lorem. Morbi ac magna in urna interdum vulputate. Curabitur porttitor semper maximus. Sed ex magna, molestie non urna id, eleifend varius tellus. Ut ac nibh nec sem tempus suscipit eu et ex.\\~\\
+
+Mit freundlichen Grüßen,\\~\\
+
+Angela Merkel
+\end{letter}
+
+\newpage
+
+\newgeometry{left=1cm,right=1.5cm,top=2cm,bottom=1cm,columnsep=1.15cm}
+\setcolumnwidth{5cm}
+\begin{paracol}{2}
+\begin{cv}{Angela Merkel}{Bundeskanzlerin}
+
+\cvsection{Kontakt}
+\cvinfo
+
+\divider
+
+\cvsection{Kenntnisse}
+\cvtag{Skill 1}
+\cvtag{Skill 2}
+
+\divider
+
+\cvsection{Sprachen}
+\cvskill{Deutsch}{5}{Muttersprache}
+\cvskill{Englisch}{4}{Verhandlungssicher}
+
+\divider
+
+\cvsection{Stärken}
+\cvstrength{\faUsers}{Anführerin}
+
+\switchcolumn
+
+\cvsection{Praxiserfahrung}
+\cvevent{Job 1}{Firma 1}{Monat 20xx -- Monat 20xx}{Ort, Deutschland}
+\begin{itemize}
+\item Beschreibung 1
+\item Beschreibung 2
+\end{itemize}
+
+\cvevent{Job 2}{Firma 2}{Monat 20xx -- Monat 20xx}{Ort, Deutschland}
+
+\divider
+
+\cvsection{Kontakt}
+\cvinfo
+
+\divider
+
+\cvsection{Kenntnisse}
+\cvtag{Skill 1}
+\cvtag{Skill 2}
+
+\divider
+
+\cvsection{Sprachen}
+\cvskill{Deutsch}{5}{Muttersprache}
+\cvskill{Englisch}{4}{Verhandlungssicher}
+
+\divider
+
+\cvsection{Stärken}
+\cvstrength{\faUsers}{Anführerin}
+
+
+\end{cv}
+\end{paracol}
+\end{document}
