@@ -69,7 +69,7 @@
 \NewDocumentEnvironment{letter}{ m +b }{
   \letterheader{#1}
   {\letterbodyfont\color{bodyfont}{#2}}\hfill
-  {\letterbodyfont\color{bodyfont}\@city, den \today}
+  {\letterbodyfont\color{bodyfont}\@city, \today}
   \letterfootnote
 }
 
@@ -80,7 +80,7 @@
   \end{tikzpicture}%
   {\\\letteraddressfont\color{headerfont}\@companyaddress\par}
   \vspace{1cm}
-  \begin{adjustwidth}{0pt}{2\@photodim}
+  \begin{adjustwidth}{0pt}{2\@photodim+1cm}
     {\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}
   \end{adjustwidth}
   \begin{tikzpicture}[remember picture,overlay]
@@ -94,7 +94,7 @@
 \newcommand{\letterfootnote}{
   \vfill
   \mbox{\letterinfofont\color{header}\faHouseUser~\color{bodyfont}\@street}\hfill\vline\hfill
-  \mbox{\letterinfofont\color{header}\faMapMarker*~\color{bodyfont}\@postalcode{, }\@city}\hfill\vline\hfill
+  \mbox{\letterinfofont\color{header}\faMapMarker*~\color{bodyfont}\@postalcode~\@city}\hfill\vline\hfill
   \mbox{\letterinfofont\color{header}\faAt~\color{bodyfont}\@email}\hfill\vline\hfill
   \mbox{\letterinfofont\color{header}\faPhone~\color{bodyfont}\@phone}
 }
@@ -110,8 +110,7 @@
   \switchcolumn
   \ifstrequal{#1}{}{}{\color{bodyfont}{\cvtitlefont{#1}\par}}
   \ifstrequal{#2}{}{}{\color{bodyfont}{\cvsubtitlefont{#2}\hspace{1em}\hrulefill\par\vspace{0.75cm}}}
-  \switchcolumn
-  {#3}
+  \switchcolumn{#3}
 }
 
 \newcommand{\divider}{
@@ -127,7 +126,7 @@
 \NewDocumentCommand{\cvinfo}{}{
   \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont}}
   \mbox{\cvitemfont\faHouseUser\hspace{1ex}\@street}\par\medskip
-  \mbox{\cvitemfont\faMapMarker*\hspace{1ex}\@postalcode{, }\@city}\par\medskip
+  \mbox{\cvitemfont\faMapMarker*\hspace{1ex}\@postalcode~\@city}\par\medskip
   \mbox{\cvitemfont\faAt\hspace{1ex}\@email}\par\medskip
   \mbox{\cvitemfont\faPhone\hspace{1ex}\@phone}\par\bigskip
 }
@@ -142,8 +141,8 @@
   }{\cvitemfont\color{bodyfont}
     {\cvitemtitlefont\color{accent}#1\par\smallskip}
     \ifstrequal{#2}{}{}{{\cvitemsubtitlefont\color{header}#2\par\smallskip}}
-    \ifstrequal{#3}{}{}{\makebox[0.5\linewidth][l]{{\smaller\faCalendar}\hspace{1ex}#3}}
-    \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}}\par\medskip  
+    \ifstrequal{#3}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faCalendar}\hspace{1ex}#3}\hfill}
+    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}}\par\medskip  
   }
 }
 
