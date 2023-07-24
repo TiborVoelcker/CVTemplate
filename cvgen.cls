@@ -53,13 +53,12 @@
 \newcommand{\cvitemsubtitlefont}{\subsectionfont}
 \newcommand{\cvitemfont}{\bodyfont}
 
-
 %%%%%%%%%%%%%%%%%%%% Variables %%%%%%%%%%%%%%%%%%%%
 \newlength{\@photodim}
 \newcommand{\companyaddress}[1]{\def\@companyaddress{#1}}
 \renewcommand{\title}[1]{\def\@title{#1}}
 \newcommand{\photo}[2]{\def\@photo{#1}
-\setlength{\@photodim}{#2}}
+  \setlength{\@photodim}{#2}}
 \newcommand{\city}[1]{\def\@city{#1}}
 \newcommand{\postalcode}[1]{\def\@postalcode{#1}}
 \newcommand{\street}[1]{\def\@street{#1}}
@@ -69,28 +68,28 @@
 
 %%%%%%%%%%%%%%%%%%%% Cover Letter %%%%%%%%%%%%%%%%%%%%
 \NewDocumentEnvironment{letter}{ m s +b }{
-  \letterheader{#1}{#2}
-  {\letterbodyfont\color{bodyfont}{#3}}\hfill
-  {\letterbodyfont\color{bodyfont}\@city, \today}
-  \letterfootnote
-}
+  \letterheader{#1}{#2} {\letterbodyfont\color{bodyfont}{#3}}\hfill {\letterbodyfont\color{bodyfont}\@city, \today}
+  \letterfootnote }
 
 \newcommand{\letterheader}[2]{%
-  \begin{tikzpicture}[remember picture,overlay]%
-  \fill[top color=white!10!header, bottom color=black!10!header] ([yshift=-0.5cm]current page.west |- {pic cs:here}) rectangle (current page.north east);
-  \IfBooleanT{#2}{\fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current page.north east);}
-  \end{tikzpicture}%
-  {\\\letteraddressfont\color{headerfont}\@companyaddress\par}
-  \vspace{1cm}
-  \begin{adjustwidth}{0pt}{2\@photodim+1cm}
-    {\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}
-  \end{adjustwidth}
-  \begin{tikzpicture}[remember picture,overlay]
-    \path[anchor={pic cs:here},xshift=\linewidth-\@photodim,
+\begin{tikzpicture}[remember picture,overlay]%
+  \fill[top color=white!10!header, bottom color=black!10!header]
+  ([yshift=-0.5cm]current page.west |- {pic cs:here}) rectangle (current
+  page.north east);
+  \IfBooleanT{#2}{\fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
+    page.north east);}
+\end{tikzpicture}{%
+\\\letteraddressfont\color{headerfont}\@companyaddress\par}
+\vspace{1cm}
+\begin{adjustwidth}{0pt}{2\@photodim+1cm}
+  {\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}
+\end{adjustwidth}
+\begin{tikzpicture}[remember picture,overlay]
+  \path[anchor={pic cs:here},xshift=\linewidth-\@photodim,
     yshift=1cm,
     fill overzoom image={\@photo}]circle[radius=\@photodim];
-  \end{tikzpicture}
-  \vspace{\@photodim-1cm}\\
+\end{tikzpicture}
+\vspace{\@photodim-1cm}\\
 }
 
 \newcommand{\letterfootnote}{
@@ -106,25 +105,21 @@
   \setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vspace{0.25\baselineskip}}
   \setlist[itemize]{label=\itemmarker}
   \begin{tikzpicture}[remember picture,overlay]%
-    \fill[left color=white!10!header, right color=black!10!header] (current page.north west) rectangle ([xshift=(\columnwidth)+\oddsidemargin+1in+(\columnsep/2)]current page.south west);%
-    \IfBooleanT{#3}{\fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current page.north east);}
+    \fill[left color=white!10!header, right color=black!10!header] (current
+    page.north west) rectangle ([xshift=(\columnwidth)+\oddsidemargin+1in+(\columnsep/2)]current page.south west);%
+    \IfBooleanT{#3}{\fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
+      page.north east);}
   \end{tikzpicture}%
   \switchcolumn
   \ifstrequal{#1}{}{}{\color{bodyfont}{\cvtitlefont{#1}\par\smallskip}}
   \ifstrequal{#2}{}{}{\color{bodyfont}{\cvsubtitlefont{#2}}\par\vspace{0.75cm}}
-  \switchcolumn
-  {#4}
-}
+  \switchcolumn {#4} }
 
 \newcommand{\divider}{
-  \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont!30}}
-    {\hdashrule{\linewidth}{0.6pt}{0.5ex}}\bigskip
-}
+  \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont!30}} {\hdashrule{\linewidth}{0.6pt}{0.5ex}}\bigskip }
 
 \NewDocumentCommand{\cvsection}{ m }{
-  \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont}}
-  {\cvsectionfont{#1}\par\medskip}
-}
+  \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont}} {\cvsectionfont{#1}\par\medskip} }
 
 \NewDocumentCommand{\cvinfo}{}{
   \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont}}
@@ -133,74 +128,43 @@
   \mbox{\cvitemfont\faAt\hspace{1ex}\@email}\par\medskip
   \mbox{\cvitemfont\faPhone\hspace{1ex}\@phone}\par\medskip
   \@ifundefined{@birthday}{}{
-    \mbox{\cvitemfont\faCalendar*[regular]\hspace{1ex}\@birthday}\par\medskip
-  }
-}
+    \mbox{\cvitemfont\faCalendar*[regular]\hspace{1ex}\@birthday}\par\medskip } }
 
 \NewDocumentCommand{\cvevent}{ m m m m }{%
-  \ifnumequal{\thecolumn}{0}{\cvitemfont\color{headerfont}
-    {\cvitemtitlefont#1\par\smallskip}
+  \ifnumequal{\thecolumn}{0}{\cvitemfont\color{headerfont} {\cvitemtitlefont#1\par\smallskip}
     \ifstrequal{#2}{}{}{{\cvitemsubtitlefont #2\par\smallskip}}
     \cvitemfont
     \ifstrequal{#3}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faCalendar}\hspace{1ex}#3}}
-    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont}
-  }{\cvitemfont\color{bodyfont}
-    {\cvitemtitlefont\color{accent}#1\par\smallskip}
+    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont} }{\cvitemfont\color{bodyfont} {\cvitemtitlefont\color{accent}#1\par\smallskip}
     \ifstrequal{#2}{}{}{{\cvitemsubtitlefont\color{header}#2\par\smallskip}}
     \ifstrequal{#3}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faCalendar}\hspace{1ex}#3}\hfill}
-    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont}  
-  }
-}
+    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont} } }
 
 \NewDocumentCommand{\cvstrength}{ m m }{%
-  \ifnumequal{\thecolumn}{0}{{\cvitemtitlefont\color{headerfont}{\smaller #1}\hspace{1ex}{#2}\par\smallskip}
-  }{
-    {\cvitemtitlefont{\smaller\color{header}#1}\hspace{1ex}{\color{accent}#2}\par\smallskip}
-  }
-}
+  \ifnumequal{\thecolumn}{0}{{\cvitemtitlefont\color{headerfont}{\smaller #1}\hspace{1ex}{#2}\par\smallskip} }{ {\cvitemtitlefont{\smaller\color{header}#1}\hspace{1ex}{\color{accent}#2}\par\smallskip} } }
 
 \NewDocumentCommand{\cvtag}{ m }{%
   \begin{tikzpicture}
-    \node[anchor=base,draw=accent,fill=background,rounded corners=3pt,
-    inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex
-    ] {\cvitemfont\color{bodyfont}#1};
+    \node[anchor=base,draw=accent,fill=background,rounded corners=3pt, inner
+      xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex ] {\cvitemfont\color{bodyfont}#1};
   \end{tikzpicture}
-  \hspace{1ex}\vspace{0.3ex}
-}
+  \hspace{1ex}\vspace{0.3ex} }
 
 \NewDocumentCommand{\cvskill}{ m m O{5} m o o }{%
-  \ifnumequal{\thecolumn}{0}{\color{headerfont}
-    {\cvitemtitlefont #1}\hfill
+  \ifnumequal{\thecolumn}{0}{\color{headerfont} {\cvitemtitlefont #1}\hfill
     \foreach \x in {1,...,#3}{%
-      \space{\ifnumgreater{\x}{#2}{
-      	\IfValueTF{#6}
-      		{\textcolor{#6}}
-      		{\textcolor{accent}}
-      	}{
-      	\IfValueTF{#5}
-      		{\textcolor{#5}}
-      		{\textcolor{headerfont}}
-      	}\ratingmarker}}\par
-    \ifstrequal{#4}{}{{\cvitemfont~\\[\parskip]}}{{\cvitemfont#4\par\medskip}}
-  }{
-    {\cvitemtitlefont\color{accent}#1}\hfill
+        \space{\ifnumgreater{\x}{#2}{
+            \IfValueTF{#6} {\textcolor{#6}} {\textcolor{accent}} }{
+            \IfValueTF{#5} {\textcolor{#5}} {\textcolor{headerfont}} }\ratingmarker}}\par
+    \ifstrequal{#4}{}{{\cvitemfont~\\[\parskip]}}{{\cvitemfont#4\par\medskip}} }{ {\cvitemtitlefont\color{accent}#1}\hfill
     \foreach \x in {1,...,#3}{%
-      \space{\ifnumgreater{\x}{#2}{
-      	\IfValueTF{#6}
-      		{\textcolor{#6}}
-      		{\textcolor{bodyfont!30}}
-      	}{
-      	\IfValueTF{#5}
-      		{\textcolor{#5}}
-      		{\textcolor{header}}
-      	}\ratingmarker}}\par
-    \ifstrequal{#4}{}{{\cvitemfont~\\[\parskip]}}{{\cvitemfont\color{bodyfont}#4\par\medskip}}
-}
-}
+        \space{\ifnumgreater{\x}{#2}{
+            \IfValueTF{#6} {\textcolor{#6}} {\textcolor{bodyfont!30}} }{
+            \IfValueTF{#5} {\textcolor{#5}} {\textcolor{header}} }\ratingmarker}}\par
+    \ifstrequal{#4}{}{{\cvitemfont~\\[\parskip]}}{{\cvitemfont\color{bodyfont}#4\par\medskip}} } }
 
 \AtBeginDocument{%
-\setlength{\parindent}{0pt}
-\pagestyle{empty}
-\pagecolor{background}
-\raggedright
-}
+  \setlength{\parindent}{0pt}
+  \pagestyle{empty}
+  \pagecolor{background}
+  \raggedright }
