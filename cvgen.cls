@@ -134,11 +134,11 @@
   \ifnumequal{\thecolumn}{0}{\cvitemfont\color{headerfont} {\cvitemtitlefont#1\par\smallskip}
     \ifstrequal{#2}{}{}{{\cvitemsubtitlefont #2\par\smallskip}}
     \cvitemfont
-    \ifstrequal{#3}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faCalendar}\hspace{1ex}#3}}
-    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont} }{\cvitemfont\color{bodyfont} {\cvitemtitlefont\color{accent}#1\par\smallskip}
+    \ifstrequal{#3}{}{}{\makebox[\widthof{{\smaller\faCalendar}\hspace{1ex}#3}][l]{{\smaller\faCalendar}\hspace{1ex}#3}}
+    \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont} }{\cvitemfont\color{bodyfont} {\cvitemtitlefont\color{accent}#1\par\smallskip}
     \ifstrequal{#2}{}{}{{\cvitemsubtitlefont\color{header}#2\par\smallskip}}
-    \ifstrequal{#3}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faCalendar}\hspace{1ex}#3}\hfill}
-    \ifstrequal{#4}{}{}{\makebox[0.45\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont} } }
+    \ifstrequal{#3}{}{}{\makebox[\widthof{{\smaller\faCalendar}\hspace{1ex}#3}][l]{{\smaller\faCalendar}\hspace{1ex}#3}\hfill}
+    \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{{\smaller\faMapMarker}\hspace{1ex}#4}\par\smallskip\bodyfont} } }
 
 \NewDocumentCommand{\cvstrength}{ m m }{%
   \ifnumequal{\thecolumn}{0}{{\cvitemtitlefont\color{headerfont}{\smaller #1}\hspace{1ex}{#2}\par\smallskip} }{ {\cvitemtitlefont{\smaller\color{header}#1}\hspace{1ex}{\color{accent}#2}\par\smallskip} } }
