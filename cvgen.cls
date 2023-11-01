@@ -80,13 +80,13 @@
 \\\letteraddressfont\color{headerfont}\@companyaddress\par}
 \vspace{1cm}
 \IfBooleanTF{#2}{{\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}}{
-\begin{adjustwidth}{0pt}{2\@photodim+1cm}
-  {\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}
-\end{adjustwidth}
-\begin{tikzpicture}[remember picture,overlay]
-  \path[anchor={pic cs:here},xshift=\linewidth-\@photodim,
-    yshift=1cm,
-    fill overzoom image={\@photo}]circle[radius=\@photodim];
+  \begin{adjustwidth}{0pt}{2\@photodim+1cm}
+    {\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}
+  \end{adjustwidth}
+  \begin{tikzpicture}[remember picture,overlay]
+    \path[anchor={pic cs:here},xshift=\linewidth-\@photodim,
+      yshift=1cm,
+      fill overzoom image={\@photo}]circle[radius=\@photodim];
   \end{tikzpicture}}
 \vspace{1.5cm}\\
 }
@@ -163,7 +163,9 @@
     \ifstrequal{#4}{}{{\cvitemfont~\\[\parskip]}}{{\cvitemfont\color{bodyfont}#4\par\medskip}} } }
 
 \AtBeginDocument{%
+  \emergencystretch 3em
   \setlength{\parindent}{0pt}
   \pagestyle{empty}
   \pagecolor{background}
-  \raggedright }
+  % \raggedright
+}
