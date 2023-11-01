@@ -76,11 +76,10 @@
   \fill[top color=white!10!header, bottom color=black!10!header]
   ([yshift=-0.5cm]current page.west |- {pic cs:here}) rectangle (current
   page.north east);
-  \IfBooleanT{#2}{\fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
-    page.north east);}
 \end{tikzpicture}{%
 \\\letteraddressfont\color{headerfont}\@companyaddress\par}
 \vspace{1cm}
+\IfBooleanTF{#2}{{\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}}{
 \begin{adjustwidth}{0pt}{2\@photodim+1cm}
   {\lettertitlefont\color{headerfont}{#1}\tikzmark{here}}
 \end{adjustwidth}
@@ -88,8 +87,8 @@
   \path[anchor={pic cs:here},xshift=\linewidth-\@photodim,
     yshift=1cm,
     fill overzoom image={\@photo}]circle[radius=\@photodim];
-\end{tikzpicture}
-\vspace{\@photodim-1cm}\\
+  \end{tikzpicture}}
+\vspace{1.5cm}\\
 }
 
 \newcommand{\letterfootnote}{
