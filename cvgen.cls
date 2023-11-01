@@ -76,6 +76,8 @@
   \fill[top color=white!10!header, bottom color=black!10!header]
   ([yshift=-0.5cm]current page.west |- {pic cs:here}) rectangle (current
   page.north east);
+  \fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
+  page.north east);
 \end{tikzpicture}{%
 \\\letteraddressfont\color{headerfont}\@companyaddress\par}
 \vspace{1cm}
@@ -100,19 +102,19 @@
 }
 
 %%%%%%%%%%%%%%%%%%%% CV %%%%%%%%%%%%%%%%%%%%
-\NewDocumentEnvironment{cv}{ m m s +b }{
+\NewDocumentEnvironment{cv}{ m m +b }{
   \setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vspace{0.25\baselineskip}}
   \setlist[itemize]{label=\itemmarker}
   \begin{tikzpicture}[remember picture,overlay]%
     \fill[left color=white!10!header, right color=black!10!header] (current
     page.north west) rectangle ([xshift=(\columnwidth)+\oddsidemargin+1in+(\columnsep/2)]current page.south west);%
-    \IfBooleanT{#3}{\fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
-      page.north east);}
+    \fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
+    page.north east);
   \end{tikzpicture}%
   \switchcolumn
   \ifstrequal{#1}{}{}{\color{bodyfont}{\cvtitlefont{#1}\par\smallskip}}
   \ifstrequal{#2}{}{}{\color{bodyfont}{\cvsubtitlefont{#2}}\par\vspace{0.75cm}}
-  \switchcolumn {#4} }
+  \switchcolumn {#3} }
 
 \newcommand{\divider}{
   \ifnumequal{\thecolumn}{0}{\color{headerfont}}{\color{bodyfont!30}} {\hdashrule{\linewidth}{0.6pt}{0.5ex}}\bigskip }
