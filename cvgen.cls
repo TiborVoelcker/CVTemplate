@@ -110,6 +110,7 @@
     page.north west) rectangle ([xshift=(\columnwidth)+\oddsidemargin+1in+(\columnsep/2)]current page.south west);%
     \fill[accent] (current page.north west) rectangle ([yshift=-0.75cm]current
     page.north east);
+    \node[text width=2cm] at (\paperwidth-1.6cm, -\paperheight+2.8cm) {\color{bodyfont}\footnotesize\today};
   \end{tikzpicture}%
   \switchcolumn
   \ifstrequal{#1}{}{}{\color{bodyfont}{\cvtitlefont{#1}\par\smallskip}}
